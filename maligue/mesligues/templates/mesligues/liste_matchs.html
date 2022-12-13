@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+  
+<html>
+<head>
+    <title>Liste des Matchs</title>
+</head>
+  
+<!-- Adding some style to table (OPTIONAL) -->
+<style type="text/css">
+      
+    th:tr{
+        color: blue;
+  
+    }
+    tr:nth-of-type(2n){
+        border: 1px solid black;
+        background-color: rgba(150, 150, 150, 0.5);
+  
+    }
+  
+    td{
+        padding: 8px 8px;
+        border: 1px solid black;
+    }
+</style>
+  
+<body>
+
+    <body>
+
+        <header>
+            <h1>Liste des Matchs</h1>
+        </header>
+    
+        <nav>
+            <ul class="menu a">
+              <li><a href="http://127.0.0.1:8000/mesligues/">Home</a></li>
+              <li><a href="http://127.0.0.1:8000/mesligues/liste_participants/">Liste Participants</a></li>
+              <li><a href="http://127.0.0.1:8000/mesligues/liste_matchs/">Liste Matchs</a></li>
+              <li><a href="http://127.0.0.1:8000/mesligues/classement/">Classement</a></li>
+            </ul>
+        </nav>
+    
+        <style>
+            .menu {
+                display: flex;              /* Transformation en flexbox */
+                padding:0;                  /* Suppression des marges internes */
+                background-color: #ccc;     /* Ajout de la couleur d'arrière-plan */
+                justify-content: center     /* Alignements des liens dans le menu */
+            }
+    
+            .menu li {
+                list-style-type: none ;       /* Suppression des puces */
+            }
+    
+            .menu a {
+                display:block;                /* Transformation en block */
+                min-width: 120px;             /* Largeur minimale des liens */   
+        
+                margin: 0.5rem;               /* Marges externes (1 valeurs = 4 directions) */
+                padding: 0.4rem 0;            /* Marges internes (2 valeurs = haut/bas et gauche/droite)*/
+                text-align: center;           /* Centrage du texte */   
+                background-color: #1ABC9C;    /* Couleur d'arrière-plan */
+                color: #fff;                  /* Couleur du texte */
+                text-decoration: none;        /* Suppression du soulignement */
+                border: 1px solid #fff;       /* Ajout d'une bordure */
+                border-radius: 4px;           /* Arrondis des bordures */
+            }
+    
+        </style>
+
+<table align="center">
+<!-- Table headers -->
+    <th>
+        <tr style="color: green; ">    
+        <td>Nom match</td>
+        <td>Date</td>
+        <td>
+            Locaux
+        </td>
+        <td>Visiteur</td>
+        <td>Ligue</td>
+        <td>Score Locaux</td>
+        <td>Score Visiteur</td>
+        </tr>
+    </th>
+      
+<!-- For loop logic of jinja template -->
+    {% for match in liste_matchs %}
+
+<!-- table rows -->
+<tr>
+    <td>{{match.nom_match}}</td>
+    <td>{{match.date_match}}</td>
+    <td>{{match.locaux}}</td>
+    <td>{{match.visiteur}}</td>
+    <td>{{match.ligue}}</td>
+    <td>{{match.score_locaux}}</td>
+    <td>{{match.score_visiteur}}</td>
+  
+{%endfor%}
+  
+</tr>
+  
+</table>
+  
+  
+</body>
+</html>
